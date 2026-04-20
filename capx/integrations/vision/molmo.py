@@ -140,9 +140,11 @@ def _image_to_data_url(image: PIL.Image.Image) -> str:
 
 
 def init_molmo(
-    # model_name: str = "allenai/moldmo-2-8b:free", # OpenRouter
-    # model_name: str = "allenai/Molmo2-O-7B",
-    model_name: str = "allenai/Molmo2-8B",
+    # Default routed through scripts/start_molmo_proxy.sh (OpenRouter proxy on :8122).
+    # If you run Molmo locally via vLLM, swap this back to "allenai/Molmo2-8B".
+    # model_name: str = "allenai/Molmo2-8B",                # local vLLM tag
+    # model_name: str = "allenai/Molmo2-O-7B",              # local vLLM tag
+    model_name: str = "allenai/molmo-7b-d:free",            # OpenRouter slug
     base_url: str = SERVICE_URL,
     api_key: str | None = None,
 ) -> Callable[[PIL.Image.Image, list[str] | None], dict[str, tuple[int | None, int | None]]]:
